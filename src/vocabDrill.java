@@ -12,7 +12,7 @@ public class vocabDrill{
         Map<String,String>vocabMap = readCsvFileIntoMap(filename);
         //System.out.println(vocabMap);
         //askAQuesiton(vocabMap);
-        //showFourQuestions(vocabMap);
+        showFourQuestions(vocabMap);
         questionsFromChapter(filename);
     }// main
     static Map<String,String>readCsvFileIntoMap(String filename){
@@ -199,9 +199,11 @@ public class vocabDrill{
     }
 
     static void questionsFromChapter(String filename){
-        int count = 0;
+        try{
+            int count = 0;
         //ask which chapter the user wants to study
         System.out.println("Which chapter would you like to study?(1-15)");
+        System.out.print("Select your chapter: ");
         Scanner input = new Scanner(System.in);
         int chapterNumber = input.nextInt()-1;
         //present 4 questions from the selected chapter
@@ -311,7 +313,12 @@ public class vocabDrill{
         System.out.printf("You got %d question(s) out of 4 questions correct.\n", count);
 
 
-    }
+    }catch(InputMismatchException e){
+            System.out.println("Please enter a valid chapter number 1-15");
+        }
+            
+        }
+        
 
 }// class 
 
